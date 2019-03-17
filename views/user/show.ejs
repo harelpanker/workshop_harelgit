@@ -1,0 +1,22 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1><%= user.fullName %></h1>
+            <div class="caption"><a href="mailto:<%= user.email %>"><%= user.email %></a></div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quasi similique architecto ad modi sunt quaerat possimus, officiis quos. Voluptatibus repellendus exercitationem, id saepe sunt consectetur non quam sapiente assumenda.</p>
+            <img src="<%= user.avatar %>" class="img-thumbnail img-fluid">
+        </div>
+        <div class="col-md-4">
+            <h3><%= user.username %>'s workshops:</h3>
+            <ul>
+            <% workshops.forEach((workshop) => { %>
+                <li><a href="/workshops/<%= workshop.id %>"><%= workshop.name %></a></li>
+            <% }); %>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+<% include ../partials/footer %>

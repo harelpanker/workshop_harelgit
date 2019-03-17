@@ -1,0 +1,42 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <h1 style="text-align: center">Sign Up</h1>
+    <div class="row">
+        <div style="width: 40%; margin: 25px auto;">
+            <form action="/register" method="POST">
+                <div class="form-group">
+                    <label for="name">User name</label>
+                    <input class="form-control" type="text" id="name" name="username" placeholder="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-control" type="password" id="password" name="password" placeholder="password">
+                </div>
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input class="form-control" type="text" id="fullName" name="fullName" placeholder="John Deo">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="john@deo.com">
+                </div>
+                <div class="form-group">
+                    <label for="avatar">Avatar</label>
+                    <input class="form-control" type="text" id="avatar" name="avatar" pattern="^https:\/\/images\.unsplash\.com\/.*" title="Only images from images.unsplash.com allowed. See link below for instructions." placeholder="https://images.unsplash.com/...">
+                    <small>Click <a href="https://youtu.be/Bn3weNRQRDE">here</a> for tutorial on how to copy <a href="https://unsplash.com/">unsplash</a> urls.</small>
+                </div>
+                <div class="form-group">
+                    <label for="admin">Admin zone</label>
+                    <input class="form-control" type="password" id="admin" name="adminCode" placeholder="Admin code">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Sign Up!</button>
+                </div>
+            </form>
+            <a href="/workshops">Go Back</a>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %> 

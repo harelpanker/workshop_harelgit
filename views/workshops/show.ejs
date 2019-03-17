@@ -1,0 +1,55 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <img class="figure-img img-thumbnail img-responsiv" src="<%= workshop.image %>">
+                <h4><%= workshop.name %></h4>
+                <div class="card-name">
+                    <p><%= workshop.description %></p>
+                    <p>Created by: <a href="/user/<%= workshop.author.id %>"><em><%= workshop.author.username %></em></a></p>
+                    <% if(currentUser && workshop.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+                        <a class="btn btn-success" href="/workshops/<%= workshop._id %>/edit">Edit Workshop</a>
+                        <form action="/workshops/<%= workshop._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-sm btn-danger">Delete Workshop</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+            <div class="jumbotron">
+                <% if(currentUser && workshop.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+                    <div class="text-right">
+                        <a class="btn btn-sm btn-success" href="/workshops/<%= workshop._id %>/sessions/new">Add New Session</a>
+                    </div>
+                <% } %>
+                <hr>
+                <% workshop.sessions.forEach(session => { %>
+                    <div class="col-md-12">
+                        <strong><%= session.title %> - </strong>
+                        <span id="time"
+                            class="text-right"><%= session.time %> minutes
+                            <% let time = session.time %>
+                            <% console.log(time) %>
+                        </span>
+                        <p><%= session.text %></p>
+                        <img class="figure-img img-thumbnail img-responsiv" src="<%= session.image %>" alt="">
+                        <% if(currentUser && workshop.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+                            <a
+                                class="btn btn-sm btn-warning" 
+                                href="/workshops/<%= workshop._id %>/sessions/<%= session._id %>/edit">
+                                Edit session
+                            </a>
+                            <form id="delete-form" action="/workshops/<%=workshop._id %>/sessions/<%=session._id %>?_method=DELETE" method="POST">
+                                <input type="submit" class="btn btn-xs btn-danger" value="Delete session">
+                            </form>
+                        <% } %>
+                    <hr>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>
