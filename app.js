@@ -13,7 +13,7 @@ require('dotenv').config();
 
 // Connect to DB
 mongoose.connect('mongodb://localhost/work_shop', {useNewUrlParser: true});
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 
 // App config
