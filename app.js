@@ -12,7 +12,8 @@ const LocalStrategy = require('passport-local');
 require('dotenv').config();
 
 // Connect to DB
-mongoose.connect('mongodb://localhost/work_shop', {useNewUrlParser: true});
+mongoose.connect('mongodb://harel:Work123Shop@ds163054.mlab.com:63054/workshop');
+// mongoose.connect('mongodb://localhost/work_shop', {useNewUrlParser: true});
 const port = process.env.PORT || 3000;
 
 
